@@ -1,4 +1,4 @@
-package pl.koziarz.specificationexample.abstracts.specification;
+package pl.koziarz.specification.abstracts.specification;
 
 public class NotSpecification<T> extends AbstractSpecification<T> {
 

@@ -1,4 +1,4 @@
-package pl.koziarz.specificationexample.domain.entity;
+package pl.koziarz.specification.domain.entity;
 
 public class ToyType {
 	private String name;

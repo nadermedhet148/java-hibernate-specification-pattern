@@ -1,4 +1,4 @@
-package pl.koziarz.specificationexample.abstracts.specification;
+package pl.koziarz.specification.abstracts.specification;
 
 public abstract class AbstractSpecification<T> implements Specification<T> {
 	

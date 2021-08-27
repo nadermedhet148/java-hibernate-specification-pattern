@@ -1,7 +1,7 @@
-package pl.koziarz.specificationexample.domain.specification;
+package pl.koziarz.specification.domain.specification;
 
-import pl.koziarz.specificationexample.abstracts.specification.AbstractSpecification;
-import pl.koziarz.specificationexample.domain.entity.Toy;
+import pl.koziarz.specification.abstracts.specification.AbstractSpecification;
+import pl.koziarz.specification.domain.entity.Toy;
 
 public class ToyColorSpecification extends AbstractSpecification<Toy> {
 

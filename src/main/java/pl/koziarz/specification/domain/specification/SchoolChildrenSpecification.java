@@ -1,4 +1,4 @@
-package pl.koziarz.specificationexample.domain.specification;
+package pl.koziarz.specification.domain.specification;
 
 public class SchoolChildrenSpecification extends ChildAgeBetweenInclSpecification {
 	

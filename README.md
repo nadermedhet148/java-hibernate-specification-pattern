@@ -8,13 +8,6 @@ expected conditions.
 They are especially helpful when retrieving objects from Repositories
 (a DAO object with simplified and precised responsibility).
 
-## Performance?!
-Well, in this example performance of checking specified elements by simply iterating through all of them is really bad.
-It may be greatly improved by generating SQL (or HQL for Hibernate) statements. As you may expect, putting SQL/HQL code
-directly into Specification objects is not that good practice, as it breaks clean separation of data from infrastructure.
-One may choose to implement converters (have a look at Spring's ConversionService) that know how to convert every specification
-and their combinations into SQL/HQL query.
-
 ## Example by example
 Let's imagine a kindergarten management system. We have children who has their names, age and they like toys. Toys have their color, type and weight. Headmaster often wants to query the system for reports. As he doesn't know SQL (but knows a little Java) it would be nice to give him a set of tools to do his daily job in a convenient way.
 

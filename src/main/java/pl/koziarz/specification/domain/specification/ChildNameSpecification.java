@@ -1,7 +1,7 @@
-package pl.koziarz.specificationexample.domain.specification;
+package pl.koziarz.specification.domain.specification;
 
-import pl.koziarz.specificationexample.abstracts.specification.AbstractSpecification;
-import pl.koziarz.specificationexample.domain.entity.Child;
+import pl.koziarz.specification.abstracts.specification.AbstractSpecification;
+import pl.koziarz.specification.domain.entity.Child;
 
 public class ChildNameSpecification extends AbstractSpecification<Child> {
 

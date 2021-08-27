@@ -1,18 +1,18 @@
-package pl.koziarz.specificationexample.domain;
+package pl.koziarz.specification;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import pl.koziarz.specificationexample.abstracts.specification.Specification;
-import pl.koziarz.specificationexample.domain.entity.Child;
-import pl.koziarz.specificationexample.domain.entity.Toy;
-import pl.koziarz.specificationexample.domain.entity.ToyType;
-import pl.koziarz.specificationexample.domain.specification.ChildLikesSpecifiedToySpecification;
-import pl.koziarz.specificationexample.domain.specification.ChildNameSpecification;
-import pl.koziarz.specificationexample.domain.specification.SchoolChildrenSpecification;
-import pl.koziarz.specificationexample.domain.specification.ToyColorSpecification;
+import pl.koziarz.specification.abstracts.specification.Specification;
+import pl.koziarz.specification.domain.entity.Child;
+import pl.koziarz.specification.domain.entity.Toy;
+import pl.koziarz.specification.domain.entity.ToyType;
+import pl.koziarz.specification.domain.specification.ChildLikesSpecifiedToySpecification;
+import pl.koziarz.specification.domain.specification.ChildNameSpecification;
+import pl.koziarz.specification.domain.specification.SchoolChildrenSpecification;
+import pl.koziarz.specification.domain.specification.ToyColorSpecification;
 
-public class KindergartenApp {
+public class App {
 
 	public static void main(String[] args) {
 		
