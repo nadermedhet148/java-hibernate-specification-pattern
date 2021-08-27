@@ -1,11 +1,8 @@
 package pl.koziarz.specification.domain.specification;
 
 import pl.koziarz.specification.abstracts.specification.AbstractSpecification;
-import pl.koziarz.specification.abstracts.specification.Specification;
-import pl.koziarz.specification.domain.entity.Toy;
-import pl.koziarz.specification.domain.entity.ToyType;
 
-public class ToyTypeNameSpecification extends AbstractSpecification<ToyType> {
+public class ToyTypeNameSpecification extends AbstractSpecification<String> {
 
 	private String name;
 
@@ -15,8 +12,8 @@ public class ToyTypeNameSpecification extends AbstractSpecification<ToyType> {
 	}
 
 	@Override
-	public boolean isSatisfiedBy(ToyType t) {
-		return t.getName().equals(name);
+	public boolean isSatisfiedBy(String t) {
+		return t.equals(name);
 	}
 
 }

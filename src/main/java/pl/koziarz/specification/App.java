@@ -6,7 +6,6 @@ import java.util.Set;
 import pl.koziarz.specification.abstracts.specification.Specification;
 import pl.koziarz.specification.domain.entity.Child;
 import pl.koziarz.specification.domain.entity.Toy;
-import pl.koziarz.specification.domain.entity.ToyType;
 import pl.koziarz.specification.domain.specification.ChildLikesSpecifiedToySpecification;
 import pl.koziarz.specification.domain.specification.ChildNameSpecification;
 import pl.koziarz.specification.domain.specification.SchoolChildrenSpecification;
@@ -16,15 +15,11 @@ public class App {
 
 	public static void main(String[] args) {
 		
-		ToyType fireTruckType = new ToyType("Fire truck");
-		ToyType racingCarType = new ToyType("Racing car");
-		ToyType policeCarType = new ToyType("Police car");
-		ToyType teddyBear     = new ToyType("Teddy Bear"); 
-		
-		Toy ferrari = new Toy("Ferrari","Red",racingCarType,0.4);
-		Toy laFireTruck = new Toy("Los Angeles Fire Truck","Red",fireTruckType,3.0);
-		Toy policeCar = new Toy("New York Police Department car","White",policeCarType,0.9);
-		Toy timmy = new Toy("Timmy The Bear","Brown",teddyBear,0.35);
+
+		Toy ferrari = new Toy("Ferrari","Red","racing car",0.4);
+		Toy laFireTruck = new Toy("Los Angeles Fire Truck","Red","fire truck",3.0);
+		Toy policeCar = new Toy("New York Police Department car","White","police car",0.9);
+		Toy timmy = new Toy(" Timmy The Bear","Brown","teddy b ear",0.35);
 		
 		Child johny = new Child("Johny",7);
 		johny.getFavouriteToys().add(ferrari);
@@ -81,7 +76,7 @@ public class App {
 		/**
 		 * Let's find all children, who are going to school (in Poland - from 6 years old to 19 y.o.)
 		 */
-		Specification<Child> spec_schoolchildren = new SchoolChildrenSpecification(); 
+		Specification<Child> spec_schoolchildren = new SchoolChildrenSpecification();
 		System.out.println("\nSchool Children");
 		printSpecified(children, spec_schoolchildren);
 	}

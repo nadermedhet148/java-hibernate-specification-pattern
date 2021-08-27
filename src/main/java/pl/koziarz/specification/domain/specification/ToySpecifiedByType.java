@@ -3,13 +3,12 @@ package pl.koziarz.specification.domain.specification;
 import pl.koziarz.specification.abstracts.specification.AbstractSpecification;
 import pl.koziarz.specification.abstracts.specification.Specification;
 import pl.koziarz.specification.domain.entity.Toy;
-import pl.koziarz.specification.domain.entity.ToyType;
 
 public class ToySpecifiedByType extends AbstractSpecification<Toy> {
 
-	private Specification<ToyType> spec;
+	private Specification<String> spec;
 
-	public ToySpecifiedByType(Specification<ToyType> spec) {
+	public ToySpecifiedByType(Specification<String> spec) {
 		super();
 		this.spec = spec;
 	}

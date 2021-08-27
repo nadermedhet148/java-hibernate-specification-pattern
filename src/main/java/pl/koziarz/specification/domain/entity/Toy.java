@@ -1,13 +1,27 @@
 package pl.koziarz.specification.domain.entity;
 
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
 public class Toy {
+	@Id
+	@GeneratedValue()
+	protected Long id;
+	@Column()
 	private String name;
+	@Column()
 	private String color;
-	private ToyType type;
+	@Column()
+	private String type;
+	@Column()
 	private double weight;
+
+	@ManyToMany(mappedBy = "favouriteToys")
+	private Set<Child> children  = new HashSet<>();
 	
 	
-	public Toy(String name, String color, ToyType type, double weight) {
+	public Toy(String name, String color, String type, double weight) {
 		super();
 		this.name = name;
 		this.color = color;
@@ -26,7 +40,7 @@ public class Toy {
 		return name;
 	}
 	
-	public ToyType getType() {
+	public String getType() {
 		return type;
 	}
 	
@@ -38,7 +52,7 @@ public class Toy {
 		this.name = name;
 	}
 	
-	public void setType(ToyType type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 	

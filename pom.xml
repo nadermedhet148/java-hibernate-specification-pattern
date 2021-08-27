@@ -6,6 +6,117 @@
 	<name>Specification Example</name>
 	<description>Example project for implementation of Specification</description>
 
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
+
+		<!-- The standardized API -->
+		<hibernate.jpa21.api.version>1.0.0.Final</hibernate.jpa21.api.version>
+
+		<!-- Hibernate's implementation -->
+		<hibernate.version>5.0.1.Final</hibernate.version>
+
+		<!-- The standardized Bean Validation API -->
+		<validation.api.version>1.1.0.Final</validation.api.version>
+
+		<!-- Hibernate's implementation -->
+		<hibernate.validator.version>5.2.1.Final</hibernate.validator.version>
+		<javax-el.version>3.0.1-b04</javax-el.version>
+
+		<!-- Everyone's favorite -->
+		<slf4j.impl.version>1.6.1</slf4j.impl.version>
+
+		<!-- For small scale deployment, use the H2 RDBMS, all Java -->
+		<h2.version>1.3.171</h2.version>
+
+		<!-- In Java SE you should use a JTA transaction manager as a JDBC connection pool, Bitronix is good -->
+		<btm.version>2.1.3</btm.version>
+
+		<!-- Integration testing with TestNG is easier than JUnit -->
+		<testng.version>6.8.7</testng.version>
+
+		<!-- Java EE 7 API for the application examples -->
+		<javaee-api.version>7.0</javaee-api.version>
+
+
+
+
+	</properties>
+
+
+	<dependencies>
+
+		<!-- The standard annotations we use in the model, JPA and Bean Validation -->
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.1-api</artifactId>
+			<version>${hibernate.jpa21.api.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>${validation.api.version}</version>
+			<optional>true</optional>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api -->
+		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>javax.persistence-api</artifactId>
+			<version>2.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate.validator.version}</version>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-envers</artifactId>
+			<version>${hibernate.version}</version>
+			<optional>true</optional>
+		</dependency>
+
+		<!-- Hibernate Metamodel annotation processor will be detected by the Java compiler -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-jpamodelgen</artifactId>
+			<version>${hibernate.version}</version>
+			<optional>true</optional>
+		</dependency>
+
+		<!-- Envers for temporal data -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-envers</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+
+		<!-- EHCache for second-level caching -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-ehcache</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+
+		<!-- H2 rocks for small-scale deployment -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>${h2.version}</version>
+		</dependency>
+
+	</dependencies>
+
 	<build>
 		<plugins>
 			<plugin>
