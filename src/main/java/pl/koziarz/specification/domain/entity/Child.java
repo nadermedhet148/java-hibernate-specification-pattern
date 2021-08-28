@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 public class Child {
 	@Id
-	@GeneratedValue()
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Long id;
 
 	@Column()

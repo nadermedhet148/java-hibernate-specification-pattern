@@ -4,9 +4,10 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+@Entity
 public class Toy {
 	@Id
-	@GeneratedValue()
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Long id;
 	@Column()
 	private String name;
@@ -19,7 +20,10 @@ public class Toy {
 
 	@ManyToMany(mappedBy = "favouriteToys")
 	private Set<Child> children  = new HashSet<>();
-	
+
+	public Toy(){
+
+	}
 	
 	public Toy(String name, String color, String type, double weight) {
 		super();
@@ -29,9 +33,6 @@ public class Toy {
 		this.weight = weight;
 	}
 
-	public Toy() {
-	}
-	
 	public String getColor() {
 		return color;
 	}
