@@ -12,12 +12,6 @@ public class ChildNameSpecification extends AbstractSpecification<Child> {
 	public ChildNameSpecification(String name){
 		this.name = name;
 	}
-
-	@Override
-	public boolean isSatisfiedBy(Child child) {
-		return false;
-	}
-
 	@Override
 	public Predicate toPredicate(Root<Child> ch, CriteriaBuilder cb) {
 		return cb.like(ch.get("name") , name);
