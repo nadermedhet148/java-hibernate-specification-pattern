@@ -1,4 +1,4 @@
-package pl.koziarz.specification.infrastructure;
+package pl.koziarz.specification.infrastructure.Connection;
 
 import bitronix.tm.resource.jdbc.PoolingDataSource;
 

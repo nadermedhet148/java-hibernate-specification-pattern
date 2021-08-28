@@ -1,6 +1,5 @@
-package pl.koziarz.specification.infrastructure;
+package pl.koziarz.specification.infrastructure.Connection;
 
-import org.hibernate.internal.util.StringHelper;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

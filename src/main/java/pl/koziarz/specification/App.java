@@ -1,11 +1,14 @@
 package pl.koziarz.specification;
 
+import java.util.List;
 import java.util.Set;
 
-import pl.koziarz.specification.abstracts.specification.Specification;
 import pl.koziarz.specification.domain.entity.Child;
+import pl.koziarz.specification.domain.entity.ChildNameSpecification;
 import pl.koziarz.specification.domain.entity.Toy;
-import pl.koziarz.specification.infrastructure.JPASetup;
+import pl.koziarz.specification.infrastructure.Connection.JPASetup;
+import pl.koziarz.specification.infrastructure.DAO.ChildDAO;
+import pl.koziarz.specification.infrastructure.DAO.ToyDAO;
 
 import javax.persistence.EntityManager;
 
@@ -19,46 +22,20 @@ public class App {
 		seedWithData(JPA.createEntityManager());
 
 
-//		/*
-//		  Let's find all children named Johny
-//		 */
-//
-//		ChildNameSpecification spec_johny = new ChildNameSpecification("Johny");
-//		System.out.println("\nChildren whose name is Johny");
-//		printSpecified(children, spec_johny);
-//
-//		/*
-//		  Let's find all children who like red toys
-//		 */
-//
-//		Specification<Child> spec_red_toy = new ChildLikesSpecifiedToySpecification(new ToyColorSpecification("Red"));
-//		System.out.println("\nChildren who likes some red toys");
-//		printSpecified(children, spec_red_toy);
-//
-//		/*
-//		  Let's find all children who likes a toy that's not red
-//		 */
-//		Specification<Child> spec_not_red_toy = new ChildLikesSpecifiedToySpecification(new ToyColorSpecification("Red").not());
-//		System.out.println("\nChildren who likes a toy that's not red");
-//		printSpecified(children, spec_not_red_toy);
-//
-//		/*
-//		  Let's find all Johnys who like red toys
-//		 */
-//
-//		Specification<Child> spec_johny_likes_red_toys = spec_johny.and(spec_red_toy);
-//		System.out.println("\nJohnys who like red toys");
-//		printSpecified(children, spec_johny_likes_red_toys);
-//
-//		/*
-//		  Let's find all children, who are going to school (in Poland - from 6 years old to 19 y.o.)
-//		 */
-//		Specification<Child> spec_schoolchildren = new SchoolChildrenSpecification();
-//		System.out.println("\nSchool Children");
-//		printSpecified(children, spec_schoolchildren);
+
+		ChildDAO childDAO = new ChildDAO(JPA.createEntityManager());
+		System.out.println("--------------------------------------------------------------------");
+		System.out.println("\nChildren whose name is Johny");
+		ChildNameSpecification spec_johny = new ChildNameSpecification("Johny");
+		List<Child> children =  childDAO.findAllBySpecification(spec_johny);
+		printSpecified(children);
+		System.out.println("--------------------------------------------------------------------");
+
 	}
 
 	private static void seedWithData(EntityManager em) {
+		ChildDAO childDAO = new ChildDAO(em);
+		ToyDAO toyDOA = new ToyDAO(em);
 		Toy ferrari = new Toy("Ferrari","Red","racing car",0.4);
 		Toy laFireTruck = new Toy("Los Angeles Fire Truck","Red","fire truck",3.0);
 		Toy policeCar = new Toy("New York Police Department car","White","police car",0.9);
@@ -81,23 +58,21 @@ public class App {
 		em.getTransaction().begin();
 
 
-		em.persist(ferrari);
-		em.persist(laFireTruck);
-		em.persist(policeCar);
-		em.persist(johny);
-		em.persist(johny2);
-		em.persist(max);
-		em.persist(jenny);
-
+		toyDOA.makePersistent(ferrari);
+		toyDOA.makePersistent(laFireTruck);
+		toyDOA.makePersistent(policeCar);
+		toyDOA.makePersistent(timmy);
+		childDAO.makePersistent(johny);
+		childDAO.makePersistent(johny2);
+		childDAO.makePersistent(max);
+		childDAO.makePersistent(jenny);
 
 		em.getTransaction().commit();
 	}
 
-	static <T> void printSpecified(Set<T> set, Specification<T> spec) {
+	static <T> void printSpecified(List<T> set) {
 		for(T t : set) {
-			if( spec.isSatisfiedBy(t) ) {
-				System.out.println(t);
-			}
+			System.out.println(t);
 		}
 	}
 
