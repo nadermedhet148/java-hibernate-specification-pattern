@@ -42,39 +42,39 @@ public class App {
 		children.add(jenny);
 		
 		
-		/**
-		 * Let's find all children named Johny
+		/*
+		  Let's find all children named Johny
 		 */
 		
 		ChildNameSpecification spec_johny = new ChildNameSpecification("Johny");
 		System.out.println("\nChildren whose name is Johny");
 		printSpecified(children, spec_johny);
-		
-		/**
-		 * Let's find all children who like red toys
+
+		/*
+		  Let's find all children who like red toys
 		 */
-		
+
 		Specification<Child> spec_red_toy = new ChildLikesSpecifiedToySpecification(new ToyColorSpecification("Red"));
 		System.out.println("\nChildren who likes some red toys");
 		printSpecified(children, spec_red_toy);
 		
-		/**
-		 * Let's find all children who likes a toy that's not red
+		/*
+		  Let's find all children who likes a toy that's not red
 		 */
 		Specification<Child> spec_not_red_toy = new ChildLikesSpecifiedToySpecification(new ToyColorSpecification("Red").not());
 		System.out.println("\nChildren who likes a toy that's not red");
 		printSpecified(children, spec_not_red_toy);
 		
-		/**
-		 * Let's find all Johnys who like red toys
+		/*
+		  Let's find all Johnys who like red toys
 		 */
 		
 		Specification<Child> spec_johny_likes_red_toys = spec_johny.and(spec_red_toy);
 		System.out.println("\nJohnys who like red toys");
 		printSpecified(children, spec_johny_likes_red_toys);
 		
-		/**
-		 * Let's find all children, who are going to school (in Poland - from 6 years old to 19 y.o.)
+		/*
+		  Let's find all children, who are going to school (in Poland - from 6 years old to 19 y.o.)
 		 */
 		Specification<Child> spec_schoolchildren = new SchoolChildrenSpecification();
 		System.out.println("\nSchool Children");
