@@ -25,12 +25,8 @@ public abstract class GenericDAOImpl<T, ID extends Serializable>
         this.em = em;
     }
 
-    public void setEntityManager(EntityManager em) {
-        this.em = em;
-    }
 
-
-    public <T> List<T> findAllBySpecification(AbstractSpecification<T> specification) {
+    public List<T> findAllBySpecification(AbstractSpecification<T> specification) {
         CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
         CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(specification.getType());
         Root<T> root = criteriaQuery.from(specification.getType());
@@ -43,29 +39,20 @@ public abstract class GenericDAOImpl<T, ID extends Serializable>
 
 
     public T findById(ID id) {
-
-        return findById(id, LockModeType.NONE);
+        return em.find(entityClass, id,  LockModeType.NONE);
     }
 
-    public T findById(ID id, LockModeType lockModeType) {
-        return em.find(entityClass, id, lockModeType);
-    }
 
-    public T findReferenceById(ID id) {
-        return em.getReference(entityClass, id);
-    }
 
-    public List<T> findAll() {
-        CriteriaQuery<T> c =
-            em.getCriteriaBuilder().createQuery(entityClass);
-        c.select(c.from(entityClass));
-        return em.createQuery(c).getResultList();
-    }
-
-    public Long getCount() {
+    public Long getCount(AbstractSpecification<T> specification) {
+        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
         CriteriaQuery<Long> c =
            em.getCriteriaBuilder().createQuery(Long.class);
-        c.select(em.getCriteriaBuilder().count(c.from(entityClass)));
+
+        Root<T> root = c.from(specification.getType());
+
+        Predicate predicate = specification.toPredicate(root, criteriaBuilder);
+        c.select(criteriaBuilder.count(root)).where(predicate);
         return em.createQuery(c).getSingleResult();
     }
 
@@ -77,12 +64,4 @@ public abstract class GenericDAOImpl<T, ID extends Serializable>
         em.remove(instance);
     }
 
-    public void checkVersion(T entity, boolean forceUpdate) {
-        em.lock(
-            entity,
-            forceUpdate
-                ? LockModeType.OPTIMISTIC_FORCE_INCREMENT
-                : LockModeType.OPTIMISTIC
-        );
-    }
 }

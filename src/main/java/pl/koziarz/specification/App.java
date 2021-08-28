@@ -1,7 +1,6 @@
 package pl.koziarz.specification;
 
 import java.util.List;
-import java.util.Set;
 
 import pl.koziarz.specification.domain.entity.Child;
 import pl.koziarz.specification.domain.entity.ChildNameSpecification;
@@ -28,7 +27,9 @@ public class App {
 		System.out.println("\nChildren whose name is Johny");
 		ChildNameSpecification spec_johny = new ChildNameSpecification("Johny");
 		List<Child> children =  childDAO.findAllBySpecification(spec_johny);
+		Long childrenCount = childDAO.getCount(spec_johny);
 		printSpecified(children);
+		System.out.println("children count is : " + childrenCount);
 		System.out.println("--------------------------------------------------------------------");
 
 	}
